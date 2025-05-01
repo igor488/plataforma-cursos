@@ -1,21 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Banner logo abaixo do header -->
-    <div style="width: 100%; height: 300px; background: url('/imagens/banner.jpg') center/cover no-repeat; display: flex; align-items: center; justify-content: center; color: white; font-size: 36px; font-weight: bold;">
-        Bem-vindo à nossa plataforma!
+    <!-- Banner estilo Udemy -->
+    <div style="width: 100%; height: 400px; background: url('{{ asset('imagens/banner.jpg') }}') center/cover no-repeat; display: flex; align-items: center; justify-content: center;">
+        <div class="text-center text-white" style="background-color: rgba(0,0,0,0.6); padding: 40px; border-radius: 10px;">
+            <h1 class="fw-bold display-5 mb-3">Aprenda no seu ritmo com os melhores cursos</h1>
+            <p class="lead mb-4">Explore nossa plataforma e encontre o curso ideal para você</p>
+            <form action="/cursos" method="GET" class="d-flex justify-content-center">
+                <input type="text" name="search" class="form-control w-50 me-2" placeholder="O que você quer aprender?">
+                <button type="submit" class="btn btn-danger">Buscar</button>
+            </form>
+        </div>
     </div>
 
     <div class="container py-5">
-        <h1 class="mb-4 text-center">Encontre o curso ideal para você</h1>
+        <h1 class="mb-4 text-center">Cursos em destaque</h1>
 
         @if ($cursos->isEmpty())
             <p class="text-center text-muted">Nenhum curso disponível no momento.</p>
         @else
             <div class="position-relative">
                 <!-- Setas -->
-                <button id="prev" class="btn btn-dark position-absolute start-0 top-50 translate-middle-y z-3" style="z-index: 10;">&#10094;</button>
-                <button id="next" class="btn btn-dark position-absolute end-0 top-50 translate-middle-y z-3" style="z-index: 10;">&#10095;</button>
+                <button id="prev" class="btn btn-dark position-absolute start-0 top-50 translate-middle-y z-3">&#10094;</button>
+                <button id="next" class="btn btn-dark position-absolute end-0 top-50 translate-middle-y z-3">&#10095;</button>
 
                 <!-- Carrossel de cursos -->
                 <div id="carousel" class="d-flex overflow-auto gap-3 px-5 scroll-smooth" style="scroll-behavior: smooth;">
