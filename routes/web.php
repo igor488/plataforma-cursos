@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [CursoController::class, 'index'])->name('home');
 
+
 Route::get('/curso/{id}', [CursoController::class, 'show'])->name('curso.show');
 
 Route::get('/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
